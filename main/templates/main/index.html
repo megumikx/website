@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElmAli — Snacks</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+<header class="header">
+    <a href="/" class="logo">ElmAli</a>
+    <div class="language">
+        <a href="#">RU</a> / <a href="#">AZ</a>
+    </div>
+</header>
+
+
+<aside class="sidebar">
+    <button
+            class="menu-icon"
+            id="menuButton"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            type="button"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="sidebar-nav" id="sidebarMenu">
+        <a href="{% url 'obertos' %}">Obertos</a>
+        <a href="{% url 'well' %}">Well</a>
+        <a href="{% url 'djin' %}">Djin</a>
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+</aside>
+
+
+<script>
+
+    const menuButton = document.getElementById('menuButton');
+    const sidebarMenu = document.getElementById('sidebarMenu');
+
+    menuButton.addEventListener('click', () => {
+        const isOpen = sidebarMenu.classList.toggle('active');
+        menuButton.setAttribute('aria-expanded', isOpen);
+    });
+
+</script>
+
+
+<main class="content">
+    <section class="hero">
+        <div>
+            <p class="eyebrow">МИР ВКУСНЫХ ПЕРЕКУСОВ</p>
+            <h1>Вкус, который<br>объединяет</h1>
+            <p>Сухарики, жевательная резинка и семечки на каждый день.</p>
+        </div>
+    </section>
+
+    <h2>Наши бренды</h2>
+
+
+    <section class="brands">
+
+
+        <a href="{% url 'obertos' %}" class="brand brand-obertos brand-image-only">
+
+            <img
+                    src="https://res.cloudinary.com/deoectfow/image/upload/v1791895465/photo_5255841065003063980_w_mv2dif.jpg"
+                    alt="Продукция Obertos"
+                    class="brand-full-image"
+            >
+
+            <div class="brand-overlay">
+                <span>OBERTOS</span>
+                <small>Хрустящие сухарики →</small>
+            </div>
+
+        </a>
+
+        <a href="{% url 'well' %}"
+           class="brand brand-well brand-image-only">
+
+            <img
+                    src="https://res.cloudinary.com/deoectfow/image/upload/v1792065838/3f204877-f106-459f-bab4-2e68d8beaefb_vfgjps.png"
+                    alt="Продукция Well"
+                    class="brand-full-image"
+            >
+
+            <div class="brand-overlay">
+                <span>WELL</span>
+                <small>Жевательная резинка →</small>
+            </div>
+
+        </a>
+
+        <a href="{% url 'djin' %}"
+           class="brand brand-djin brand-image-only">
+
+            <img
+                    src="https://res.cloudinary.com/deoectfow/image/upload/v1792067398/49cb8466-5fc2-4849-8642-4ff1df42548b_vecgoj.png"
+                    alt="Продукция Djinn"
+                    class="brand-full-image"
+            >
+
+            <div class="brand-overlay">
+                <span>Djinn</span>
+                <small>Семечки с обжаркой→</small>
+            </div>
+
+        </a>
+
+    </section>
+</main>
+</body>
+</html>
