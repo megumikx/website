@@ -1,0 +1,57 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ElmAli — Snacks{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}?v=2">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'index' %}" class="logo">ElmAli</a>
+        <div class="language">
+            <a href="#">RU</a> / <a href="#">AZ</a>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <button
+            class="menu-icon"
+            id="menuButton"
+            aria-label="Открыть меню"
+            aria-expanded="false"
+            type="button"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="sidebar-nav" id="sidebarMenu">
+            <a href="{% url 'obertos' %}">Obertos</a>
+            <a href="{% url 'well' %}">Well</a>
+            <a href="{% url 'djin' %}">Джинн</a>
+            <a href="{% url 'chokki' %}">ChoKi-ki</a>
+            <a href="{% url 'boombubble' %}">Bubble Boom</a>
+            <a href="{% url 'puxliykrolik' %}">Пухлый Кролик</a>
+            <a href="{% url 'about' %}">About</a>
+        </nav>
+    </aside>
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+
+        menuButton.addEventListener('click', () => {
+            const isOpen = sidebarMenu.classList.toggle('active');
+            menuButton.setAttribute('aria-expanded', isOpen);
+        });
+    </script>
+</body>
+</html>

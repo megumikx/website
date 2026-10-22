@@ -1,119 +1,74 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElmAli — Snacks</title>
-    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
-</head>
-<body>
-<header class="header">
-    <a href="/" class="logo">ElmAli</a>
-    <div class="language">
-        <a href="#">RU</a> / <a href="#">AZ</a>
+
+{% extends "main/base.html" %}
+
+{% block title %}ElmAli — Snacks{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div>
+        <p class="eyebrow">МИР ВКУСНЫХ ПЕРЕКУСОВ</p>
+        <h1>Вкус, который<br>объединяет</h1>
+        <p>Сухарики, жевательная резинка и семечки на каждый день.</p>
     </div>
-</header>
+</section>
 
+<h2>Наши бренды</h2>
 
-<aside class="sidebar">
-    <button
-            class="menu-icon"
-            id="menuButton"
-            aria-label="Открыть меню"
-            aria-expanded="false"
-            type="button"
-    >
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
+<section class="brands">
 
-    <nav class="sidebar-nav" id="sidebarMenu">
-        <a href="{% url 'obertos' %}">Obertos</a>
-        <a href="{% url 'well' %}">Well</a>
-        <a href="{% url 'djin' %}">Djin</a>
-        <a href="{% url 'about' %}">About</a>
-    </nav>
-</aside>
-
-
-<script>
-
-    const menuButton = document.getElementById('menuButton');
-    const sidebarMenu = document.getElementById('sidebarMenu');
-
-    menuButton.addEventListener('click', () => {
-        const isOpen = sidebarMenu.classList.toggle('active');
-        menuButton.setAttribute('aria-expanded', isOpen);
-    });
-
-</script>
-
-
-<main class="content">
-    <section class="hero">
-        <div>
-            <p class="eyebrow">МИР ВКУСНЫХ ПЕРЕКУСОВ</p>
-            <h1>Вкус, который<br>объединяет</h1>
-            <p>Сухарики, жевательная резинка и семечки на каждый день.</p>
+    <a href="{% url 'obertos' %}" class="brand brand-obertos brand-image-only">
+        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1791895465/photo_5255841065003063980_w_mv2dif.jpg"
+             alt="Продукция Obertos" class="brand-full-image">
+        <div class="brand-overlay">
+            <span>OBERTOS</span>
+            <small>Хлебные чипсы →</small>
         </div>
-    </section>
+    </a>
 
-    <h2>Наши бренды</h2>
+    <a href="{% url 'well' %}" class="brand brand-well brand-image-only">
+        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792065838/3f204877-f106-459f-bab4-2e68d8beaefb_vfgjps.png"
+             alt="Продукция Well" class="brand-full-image">
+        <div class="brand-overlay">
+            <span>WELL</span>
+            <small>Жевательная резинка →</small>
+        </div>
+    </a>
 
+    <a href="{% url 'djin' %}" class="brand brand-djin brand-image-only">
+        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792067398/49cb8466-5fc2-4849-8642-4ff1df42548b_vecgoj.png"
+             alt="Продукция Djinn" class="brand-full-image">
+        <div class="brand-overlay">
+            <span>Djinn</span>
+            <small>Семечки с обжаркой →</small>
+        </div>
+    </a>
 
-    <section class="brands">
+    <a href="{% url 'puxliykrolik' %}" class="brand brand-puxliykrolik brand-image-only">
+        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792130746/fa9c7c70-6d2a-470d-a529-469d522ecf5b_hs3rfd.png"
+             alt="Продукция Пухлый Кролик" class="brand-full-image">
+        <div class="brand-overlay">
+            <span>Пухлый Кролик</span>
+            <small>Воздушное суфле →</small>
+        </div>
+    </a>
 
+    <a href="{% url 'boombubble' %}" class="brand brand-boombubble brand-image-only">
+        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792140904/338c4069-9274-4218-8d6d-2f5937d7d942_ckbzhn.png"
+             alt="Продукция Bubble Boom" class="brand-full-image">
+        <div class="brand-overlay">
+            <span>Bubble Boom</span>
+            <small>Жевательная резинка с начинкой →</small>
+        </div>
+    </a>
 
-        <a href="{% url 'obertos' %}" class="brand brand-obertos brand-image-only">
+    <a href="{% url 'chokki' %}" class="brand brand-chokki brand-image-only">
+        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792653938/38974061-fb3a-4d65-a50f-5692f5734115_auca4b.png"
+             alt="Продукция ChoK-ki" class="brand-full-image">
+        <div class="brand-overlay">
+            <span>ChoK-ki</span>
+            <small>Палочки в глазури →</small>
+        </div>
+    </a>
 
-            <img
-                    src="https://res.cloudinary.com/deoectfow/image/upload/v1791895465/photo_5255841065003063980_w_mv2dif.jpg"
-                    alt="Продукция Obertos"
-                    class="brand-full-image"
-            >
-
-            <div class="brand-overlay">
-                <span>OBERTOS</span>
-                <small>Хрустящие сухарики →</small>
-            </div>
-
-        </a>
-
-        <a href="{% url 'well' %}"
-           class="brand brand-well brand-image-only">
-
-            <img
-                    src="https://res.cloudinary.com/deoectfow/image/upload/v1792065838/3f204877-f106-459f-bab4-2e68d8beaefb_vfgjps.png"
-                    alt="Продукция Well"
-                    class="brand-full-image"
-            >
-
-            <div class="brand-overlay">
-                <span>WELL</span>
-                <small>Жевательная резинка →</small>
-            </div>
-
-        </a>
-
-        <a href="{% url 'djin' %}"
-           class="brand brand-djin brand-image-only">
-
-            <img
-                    src="https://res.cloudinary.com/deoectfow/image/upload/v1792067398/49cb8466-5fc2-4849-8642-4ff1df42548b_vecgoj.png"
-                    alt="Продукция Djinn"
-                    class="brand-full-image"
-            >
-
-            <div class="brand-overlay">
-                <span>Djinn</span>
-                <small>Семечки с обжаркой→</small>
-            </div>
-
-        </a>
-
-    </section>
-</main>
-</body>
-</html>
+</section>
+{% endblock %}

@@ -1,7 +1,27 @@
+import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+import cloudinary
+from dotenv import load_dotenv
+
+# Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load environment variables
+load_dotenv(BASE_DIR / "env")
+
+# Cloudinary configuration
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.getenv("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.getenv("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.getenv("CLOUDINARY_API_SECRET"),
+}
+
+cloudinary.config(
+    cloud_name=os.getenv("deoectfow"),
+    api_key=os.getenv("976858926997375"),
+    api_secret=os.getenv("e_PGrwaFmlGmX86GxzCKxkvb-yY"),
+)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-_&$7p+lt&r1hx9*q7u0=gwgrw2v_-ok+ih7=xc^q9j&b-r0+yq'

@@ -8,3 +8,4 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'brand')
     list_filter = ('brand',)
     search_fields = ('name',)
+    exclude = ('weight', 'flavor')

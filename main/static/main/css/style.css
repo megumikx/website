@@ -1,137 +1,111 @@
-
-/* =========================
-   1. ОСНОВА
-========================= */
-
+/* ElmAli Snacks — единый адаптивный стиль */
 * {
     box-sizing: border-box;
 }
 
 html {
     min-height: 100%;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 body {
+    position: relative; /* ИСПРАВЛЕНИЕ: сайдбар теперь растягивается на всю высоту страницы */
     margin: 0;
+    min-height: 100vh;
+    width: 100%;
     background: #f7f5f0;
     color: #222;
-    font-family: Arial, sans-serif;
-    font-size: 16px;
+    font: 15px Arial, Helvetica, sans-serif;
 }
 
 a {
     color: inherit;
 }
 
-
-/* =========================
-   2. ШАПКА
-========================= */
-
 .header {
     position: relative;
     z-index: 10;
-    width: 100%;
-    min-height: 88px;
-    padding: 0 40px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    width: 100%;
+    min-height: 58px;
+    padding: 8px 24px;
     background: #f7f5f0;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #333;
 }
 
 .logo {
     color: #222;
-    text-decoration: none;
-    font-size: 34px;
+    font-size: 24px;
     font-weight: 800;
     letter-spacing: -1px;
+    text-decoration: none;
 }
 
 .language {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
 }
 
 .language a {
     color: #222;
+    font-size: 12px;
+    font-weight: 700;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
 }
 
-.language a:hover {
+.language a:hover, .sidebar-nav a:hover {
     color: #bd542a;
 }
 
-
-/* =========================
-   3. БОКОВАЯ ПАНЕЛЬ
-========================= */
-
+/* Sidebar stays alongside the content and stretches with the page */
 .sidebar {
     position: absolute;
-    top: 88px;
-    left: 0;
+    top: 58px;
     bottom: 0;
-
-    width: 210px;
-    min-height: calc(100vh - 88px);
-    padding: 36px 30px;
-
+    left: 0;
+    width: 155px;
+    min-height: calc(100% - 58px);
+    padding: 18px 16px;
     background: #f7f5f0;
-    border-right: 1px solid #222;
+    border-right: 1px solid #333;
 }
-
-
-/* =========================
-   4. КНОПКА МЕНЮ
-========================= */
 
 .menu-icon {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 8px;
-
-    width: 64px;
-    height: 64px;
-    padding: 8px;
-    margin-bottom: 20px;
-
-    border: none;
+    gap: 6px;
+    width: 42px;
+    height: 42px;
+    padding: 4px;
+    margin: 0 0 8px;
+    border: 0;
     background: transparent;
     cursor: pointer;
-
-    transition: transform 0.15s ease;
 }
 
 .menu-icon span {
     display: block;
-    height: 4px;
+    height: 3px;
+    border-radius: 2px;
     background: #222;
-    border-radius: 1px;
 }
 
 .menu-icon span:nth-child(1) {
-    width: 34px;
+    width: 30px;
 }
 
 .menu-icon span:nth-child(2) {
-    width: 27px;
+    width: 24px;
 }
 
 .menu-icon span:nth-child(3) {
-    width: 18px;
-}
-
-.menu-icon:active {
-    transform: scale(0.88);
+    width: 17px;
 }
 
 .menu-icon:focus-visible {
@@ -139,36 +113,23 @@ a {
     outline-offset: 3px;
 }
 
-
-/* =========================
-   5. ВЫПАДАЮЩЕЕ МЕНЮ
-========================= */
-
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-
+    gap: 0;
+    width: 100%;
     max-height: 0;
     margin-top: 0;
     overflow: hidden;
-
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-
-    transition:
-        max-height 0.4s ease,
-        opacity 0.3s ease,
-        margin-top 0.3s ease,
-        visibility 0.3s ease;
+    transition: max-height .35s ease, opacity .25s ease, margin-top .25s ease, visibility .25s ease;
 }
 
 .sidebar-nav.active {
-    max-height: 300px;
-    margin-top: 20px;
-
+    max-height: 600px;
+    margin-top: 12px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -177,144 +138,98 @@ a {
 .sidebar-nav a {
     display: block;
     width: 100%;
-    padding: 12px 0;
-
+    padding: 8px 0;
     color: #222;
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 600;
+    line-height: 1.35;
     text-decoration: none;
+    overflow-wrap: anywhere;
 }
-
-.sidebar-nav a:hover {
-    color: #bd542a;
-}
-
-
-/* =========================
-   6. ОСНОВНОЙ КОНТЕНТ
-========================= */
 
 .content {
-    width: calc(100% - 210px);
-    margin-left: 210px;
-    padding: 28px;
+    width: calc(100% - 155px);
+    min-width: 0;
+    margin-left: 155px;
+    padding: 18px;
+    background: #f7f5f0;
 }
 
 .content h2 {
-    margin: 32px 0 20px;
-    font-size: 28px;
-    font-weight: 700;
+    margin: 20px 0 12px;
+    font-size: 20px;
+    line-height: 1.3;
 }
 
-
-/* =========================
-   7. ГЛАВНЫЙ БАННЕР
-========================= */
-
 .hero {
-    position: relative;
-    width: 100%;
-    min-height: 360px;
-    padding: 48px;
-
     display: flex;
     align-items: center;
-
+    width: 100%;
+    min-width: 0;
+    min-height: 200px;
+    padding: 24px 28px;
     overflow: hidden;
-    isolation: isolate;
-
-    background: linear-gradient(
-        110deg,
-        #38251b 0%,
-        #68412c 55%,
-        #9b5834 100%
-    );
-
     color: #fff;
+    background: linear-gradient(110deg, #38251b 0%, #68412c 55%, #9b5834 100%);
 }
 
 .hero > div {
-    position: relative;
-    z-index: 1;
-    max-width: 650px;
+    width: 100%;
+    max-width: 600px;
+    min-width: 0;
 }
 
 .eyebrow {
-    margin: 0 0 18px;
-    font-size: 13px;
-    letter-spacing: 3px;
+    margin: 0 0 8px;
+    font-size: 10px;
+    line-height: 1.6;
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .hero h1 {
-    margin: 15px 0;
-    font-size: clamp(36px, 4vw, 60px);
+    margin: 10px 0;
+    font-size: 34px;
     line-height: 1.08;
     font-weight: 800;
+    overflow-wrap: break-word;
 }
 
 .hero p:not(.eyebrow) {
-    max-width: 520px;
-    font-size: 17px;
+    max-width: 480px;
+    margin: 0;
+    font-size: 13px;
     line-height: 1.6;
 }
 
-
-/* =========================
-   8. СЕТКА БРЕНДОВ
-========================= */
-
+/* Home page brand tiles */
 .brands {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-
+    gap: 12px;
     width: 100%;
+    min-width: 0;
 }
-
-
-/* =========================
-   9. КАРТОЧКИ БРЕНДОВ
-========================= */
 
 .brand {
     position: relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
-    gap: 12px;
-
+    display: block;
+    width: 100%;
     min-width: 0;
-    min-height: 260px;
-    padding: 30px;
-
+    min-height: 165px;
+    padding: 0;
     overflow: hidden;
     isolation: isolate;
-
     color: #fff;
-    text-align: left;
     text-decoration: none;
-
-    transition:
-        transform 0.25s ease,
-        filter 0.25s ease;
+    background: #775747;
 }
-
-.brand:hover {
-    transform: translateY(-4px);
-    filter: brightness(1.08);
-}
-
-
-/* Цвета карточек */
 
 .brand-obertos {
     background: #775747;
 }
 
-.brand-sakkiz {
+.brand-well {
     background: #c58494;
 }
 
@@ -322,283 +237,274 @@ a {
     background: #be9a50;
 }
 
-
-/* Текст внутри карточек */
-
-.brand-text {
-    position: relative;
-    z-index: 2;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-
-    width: 55%;
-    max-width: 55%;
-
-    color: #fff;
-    text-align: left;
+.brand-boombubble {
+    background: #d8a0ad;
 }
 
-.brand-text span,
-.brand > span {
-    display: block;
-    margin: 0;
-
-    color: #fff;
-    font-size: clamp(22px, 2.5vw, 32px);
-    font-weight: 800;
-    letter-spacing: 1px;
-
-    text-align: left;
+.brand-puxliykrolik {
+    background: #e6c5d1;
 }
 
-.brand-text small,
-.brand > small {
-    display: block;
-    margin: 0;
-
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.5;
-
-    text-align: left;
+.brand-chokki {
+    background: #4b3026;
 }
-
-
-/* =========================
-   10. ИЗОБРАЖЕНИЯ CLOUDINARY
-========================= */
-
-.brand-product {
-    position: absolute;
-    z-index: 1;
-
-    top: 50%;
-    right: 5%;
-
-    width: 45%;
-    height: 90%;
-
-    object-fit: contain;
-    object-position: center;
-
-    transform: translateY(-50%);
-    transition: transform 0.4s ease;
-}
-
-.brand:hover .brand-product {
-    transform: translateY(-50%) scale(1.08);
-}
-
-
-/* =========================
-   11. АДАПТИВНОСТЬ
-========================= */
-
-@media (max-width: 1000px) {
-    .sidebar {
-        width: 200px;
-        padding: 26px 20px;
-    }
-
-    .content {
-        width: calc(100% - 200px);
-        margin-left: 200px;
-        padding: 22px;
-    }
-
-    .hero {
-        min-height: 320px;
-        padding: 32px;
-    }
-
-    .brands {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-
-/* =========================
-   12. МОБИЛЬНАЯ ВЕРСИЯ
-========================= */
-
-@media (max-width: 600px) {
-    .header {
-        padding: 0 20px;
-    }
-
-    .logo {
-        font-size: 28px;
-    }
-
-    .sidebar {
-        position: relative;
-        top: 0;
-        bottom: auto;
-
-        width: 100%;
-        min-height: auto;
-        padding: 15px 20px;
-
-        border-right: none;
-        border-bottom: 1px solid #222;
-    }
-
-    .content {
-        width: 100%;
-        margin-left: 0;
-        padding: 20px;
-    }
-
-    .content h2 {
-        font-size: 24px;
-    }
-
-    .hero {
-        min-height: 280px;
-        padding: 24px;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .brands {
-        grid-template-columns: 1fr;
-    }
-
-    .brand {
-        min-height: 240px;
-        padding: 24px;
-    }
-
-    .brand-text {
-        width: 55%;
-        max-width: 55%;
-    }
-}
-
-/* =========================
-   КАРТОЧКА O B E R T O S
-========================= */
 
 .brand-image-only {
-    position: relative;
-    display: block;
-    min-width: 0;
-    min-height: 260px;
+    min-height: 165px;
     padding: 0;
-    overflow: hidden;
-    background: #775747;
-    isolation: isolate;
 }
-
-/* Изображение */
 
 .brand-full-image {
     position: absolute;
     inset: 0;
     z-index: 0;
-
     display: block;
     width: 100%;
     height: 100%;
-
     object-fit: cover;
     object-position: center;
-
-    transition: filter 0.35s ease;
+    transition: filter .3s ease;
 }
-
-/* Затемнение при наведении */
-
-.brand-image-only:hover .brand-full-image {
-    filter: brightness(0.55);
-}
-
-/* Текст поверх изображения */
 
 .brand-overlay {
     position: absolute;
     inset: 0;
     z-index: 2;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
-    gap: 10px;
-
-    padding: 30px;
-
+    gap: 8px;
+    padding: 14px;
     color: #fff;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, .4);
     opacity: 0;
     pointer-events: none;
-
-    transition: opacity 0.35s ease;
+    transition: opacity .3s ease;
 }
 
 .brand-overlay span {
-    font-size: clamp(22px, 2.5vw, 32px);
+    font-size: 18px;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: .5px;
+    overflow-wrap: anywhere;
 }
 
 .brand-overlay small {
-    font-size: 14px;
+    font-size: 11px;
     line-height: 1.5;
 }
 
-/* Появление надписей */
+.brand-image-only:hover .brand-full-image, .brand-image-only:focus-visible .brand-full-image {
+    filter: brightness(.55);
+}
 
-.brand-image-only:hover .brand-overlay {
+.brand-image-only:hover .brand-overlay, .brand-image-only:focus-visible .brand-overlay {
     opacity: 1;
 }
 
-/* Клавиатурная навигация */
-
-.brand-image-only:focus-visible .brand-full-image {
-    filter: brightness(0.55);
+.brand-image-only:focus-visible {
+    outline: 3px solid #bd542a;
+    outline-offset: 3px;
 }
 
-.brand-image-only:focus-visible .brand-overlay {
-    opacity: 1;
+/* Brand product catalog */
+.catalog-page {
+    width: 100%;
+    max-width: 1400px;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 6px 2px 24px;
+}
+
+.catalog-header {
+    margin-bottom: 24px;
+}
+
+.catalog-header .eyebrow {
+    color: #bd542a;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.catalog-header h1 {
+    margin: 8px 0;
+    color: #38251b;
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.2;
+}
+
+.catalog-header > p:last-child {
+    color: #777;
+    line-height: 1.6;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 18px;
+    width: 100%;
+    min-width: 0;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #eee7df;
+    border-radius: 12px;
+    background: #fff;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(56, 37, 27, .07);
+}
+
+.product-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 210px;
+    padding: 16px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.product-image img, .product-card > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 260px;
+    object-fit: contain;
+}
+
+.product-image span {
+    color: #777;
+    text-align: center;
+    font-size: 13px;
+}
+
+.product-info {
+    padding: 15px;
+    overflow-wrap: anywhere;
+}
+
+.product-info h2, .product-card h3 {
+    margin: 0 0 10px;
+    color: #38251b;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.product-info p, .product-card p {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.empty-catalog {
+    grid-column: 1 / -1;
+    padding: 30px;
+    color: #777;
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    .sidebar {
+        width: 145px;
+        padding: 18px 14px;
+    }
+
+    .content {
+        width: calc(100% - 145px);
+        margin-left: 145px;
+        padding: 16px;
+    }
+
+    .brands, .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        min-height: 190px;
+        padding: 22px;
+    }
+
+    .hero h1 {
+        font-size: clamp(28px, 4vw, 34px);
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        min-height: 58px;
+        padding: 10px 18px;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+
+    .sidebar {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        width: 100%;
+        min-height: 0;
+        padding: 10px 18px;
+        border-right: 0;
+        border-bottom: 1px solid #333;
+    }
+
+    .menu-icon {
+        margin-bottom: 0;
+    }
+
+    .content {
+        width: 100%;
+        margin-left: 0;
+        padding: 14px;
+    }
+
+    .hero {
+        min-height: 210px;
+        padding: 22px;
+    }
+
+    .hero h1 {
+        font-size: clamp(27px, 8vw, 34px);
+    }
+
+    .hero p:not(.eyebrow) {
+        font-size: 14px;
+    }
+
+    .brands, .product-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .brand-image-only {
+        min-height: 220px;
+    }
+
+    .product-image {
+        height: 240px;
+    }
+
+    .catalog-page {
+        padding: 4px 0 20px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .brand-full-image,
-    .brand-overlay {
-        transition: none;
+    *, *::before, *::after {
+        transition-duration: .01ms !important;
     }
-}
-/* Цвет карточки WELL */
-.brand-well {
-    background: #c58494;
-}
-
-/* Общий эффект для всех карточек с изображениями */
-.brand-image-only:hover .brand-full-image {
-    filter: brightness(0.55);
-}
-
-.brand-image-only:hover .brand-overlay {
-    opacity: 1;
-}
-
-/* Плавное затемнение при наведении */
-.brand-full-image {
-    transition: filter 0.35s ease;
-}
-
-/* Карточки с изображениями не должны увеличиваться */
-.brand-image-only:hover {
-    transform: none;
-    filter: none;
-}
-
-/* Надписи поверх изображений */
-.brand-overlay {
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
 }
