@@ -1,0 +1,33 @@
+.eac{--ink:#101935;--muted:#55607f;--line:#e3e8f3;--accent:#FF3B4E;font-family:'Manrope',Arial,sans-serif;color:var(--ink);line-height:1.6}
+.eac *{box-sizing:border-box}
+.eac h1,.eac h2,.eac p{margin:0}
+.eac a{color:inherit;text-decoration:none}
+
+/* Шапка страницы бренда */
+.eac-head{position:relative;overflow:hidden;border-radius:32px;background:var(--ink);color:#fff;padding:56px;margin-bottom:40px}
+.eac-head::after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:var(--accent);right:-70px;top:-100px}
+.eac-head > *{position:relative;z-index:1}
+.eac-back{display:inline-block;margin-bottom:24px;padding:8px 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.35);font-size:14px;font-weight:700;transition:background .2s}
+.eac-back:hover{background:rgba(255,255,255,.12)}
+.eac-head h1{font-family:'Unbounded','Arial Black',sans-serif;font-weight:700;font-size:clamp(30px,4.4vw,52px);line-height:1.1;letter-spacing:-.03em}
+.eac-head p{margin-top:14px;max-width:48ch;font-size:19px;color:#c9d2ee}
+
+/* Сетка товаров */
+.eac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-bottom:72px}
+.eac-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.eac-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(16,25,53,.12)}
+
+/* Картинка: одинаковая рамка, фото вписывается целиком */
+.eac-img{position:relative;aspect-ratio:4/5;overflow:hidden;background:#eef1f8;display:block}
+.eac-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:20px;display:block}
+.eac-placeholder{position:absolute;inset:0;display:grid;place-items:center;padding:16px;text-align:center;color:var(--muted);font-size:14px}
+
+/* Текст: карточки в ряду одной высоты */
+.eac-info{flex:1;padding:20px 22px 24px;border-top:4px solid var(--accent)}
+.eac-info h2{font-family:'Unbounded','Arial Black',sans-serif;font-weight:500;font-size:16px;line-height:1.35}
+.eac-info p{margin-top:8px;color:var(--muted);font-size:15px}
+
+.eac-empty{grid-column:1/-1;padding:40px;text-align:center;background:#fff;border:1px dashed var(--line);border-radius:24px;color:var(--muted)}
+
+@media (max-width:700px){.eac-head{padding:32px 24px}}
+@media (prefers-reduced-motion:reduce){.eac *{transition:none!important}}

@@ -1,51 +1,44 @@
+
 {% extends "main/base.html" %}
+{% load static %}
 
 {% block title %}WELL — ElmAli Snacks{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/catalog.css' %}?v=1">
+{% endblock %}
+
 {% block content %}
-<section class="catalog-page">
-    <header class="catalog-header">
-        <p class="eyebrow">НАША ПРОДУКЦИЯ</p>
+<div class="eac" style="--accent:#20BCE5">
+    <header class="eac-head">
+        <a href="{% url 'index' %}#brands" class="eac-back">← Все бренды</a>
         <h1>WELL</h1>
-        <p>Жевательная резинка с яркими вкусами для приятного освежения.</p>
+        <p>Жевательная резинка с яркими вкусами для свежести каждый день.</p>
     </header>
 
-    <section class="product-grid">
+    <section class="eac-grid">
         {% for product in products %}
-        <article class="product-card">
-            <div class="product-image">
+        <article class="eac-card">
+            <div class="eac-img">
                 {% if product.image_url %}
-                    <img
-                        src="{{ product.image_url }}"
-                        alt="{{ product.name }}"
-                        loading="lazy"
-                    >
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" loading="lazy">
                 {% elif product.image %}
-                    <img
-                        src="{{ product.image.url }}"
-                        alt="{{ product.name }}"
-                        loading="lazy"
-                    >
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy">
                 {% else %}
-                    <span class="image-placeholder">
-                        Изображение отсутствует
-                    </span>
+                    <span class="eac-placeholder">Изображение отсутствует</span>
                 {% endif %}
             </div>
 
-            <div class="product-info">
+            <div class="eac-info">
                 <h2>{{ product.name }}</h2>
-
                 {% if product.description %}
                     <p>{{ product.description }}</p>
                 {% endif %}
             </div>
         </article>
         {% empty %}
-        <p class="empty-catalog">
-            Пока товаров нет. Добавь товары WELL через админ-панель.
-        </p>
+        <p class="eac-empty">Пока товаров нет. Добавьте товары WELL через админ-панель.</p>
         {% endfor %}
     </section>
-</section>
+</div>
 {% endblock %}

@@ -1,57 +1,72 @@
-
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ElmAli — Snacks{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}?v=2">
+    <link rel="stylesheet" href="{% static 'main/css/layout.css' %}?v=1">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <header class="header">
-        <a href="{% url 'index' %}" class="logo">ElmAli</a>
-        <div class="language">
-            <a href="#">RU</a> / <a href="#">AZ</a>
+
+<div class="ea-header" role="banner">
+    <div class="ea-header-inner">
+        <a href="{% url 'index' %}" class="ea-logo">Elm<i>Ali</i></a>
+
+        <div class="ea-header-right">
+            <form action="{% url 'set_language' %}" method="post" class="ea-lang">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                <button type="submit" name="language" value="ru"
+                        class="ea-lang-btn{% if LANGUAGE_CODE == 'ru' %} is-active{% endif %}">RU</button>
+                <button type="submit" name="language" value="az"
+                        class="ea-lang-btn{% if LANGUAGE_CODE == 'az' %} is-active{% endif %}">AZ</button>
+            </form>
+
+            <button class="ea-burger" id="menuButton" type="button"
+                    aria-label="{% trans 'Открыть меню' %}" aria-expanded="false" aria-controls="sidebarMenu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
-    </header>
+    </div>
 
-    <aside class="sidebar">
-        <button
-            class="menu-icon"
-            id="menuButton"
-            aria-label="Открыть меню"
-            aria-expanded="false"
-            type="button"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+    <nav class="ea-menu" id="sidebarMenu">
+        <a href="{% url 'obertos' %}">Obertos</a>
+        <a href="{% url 'well' %}">Well</a>
+        <a href="{% url 'djin' %}">{% trans "Джинн" %}</a>
+        <a href="{% url 'chokki' %}">ChoKi-ki</a>
+        <a href="{% url 'boombubble' %}">Bubble Boom</a>
+        <a href="{% url 'puxliykrolik' %}">{% trans "Пухлый Кролик" %}</a>
+        <a href="{% url 'about' %}">{% trans "О нас" %}</a>
+    </nav>
+</div>
 
-        <nav class="sidebar-nav" id="sidebarMenu">
-            <a href="{% url 'obertos' %}">Obertos</a>
-            <a href="{% url 'well' %}">Well</a>
-            <a href="{% url 'djin' %}">Джинн</a>
-            <a href="{% url 'chokki' %}">ChoKi-ki</a>
-            <a href="{% url 'boombubble' %}">Bubble Boom</a>
-            <a href="{% url 'puxliykrolik' %}">Пухлый Кролик</a>
-            <a href="{% url 'about' %}">About</a>
-        </nav>
-    </aside>
+<main class="ea-main">
+    {% block content %}{% endblock %}
+</main>
 
-    <main class="content">
-        {% block content %}{% endblock %}
-    </main>
+<script>
+    const menuButton = document.getElementById('menuButton');
+    const sidebarMenu = document.getElementById('sidebarMenu');
 
-    <script>
-        const menuButton = document.getElementById('menuButton');
-        const sidebarMenu = document.getElementById('sidebarMenu');
+    menuButton.addEventListener('click', () => {
+        const isOpen = sidebarMenu.classList.toggle('active');
+        menuButton.setAttribute('aria-expanded', isOpen);
+    });
 
-        menuButton.addEventListener('click', () => {
-            const isOpen = sidebarMenu.classList.toggle('active');
-            menuButton.setAttribute('aria-expanded', isOpen);
-        });
-    </script>
+    document.addEventListener('click', (e) => {
+        if (!sidebarMenu.contains(e.target) && !menuButton.contains(e.target)) {
+            sidebarMenu.classList.remove('active');
+            menuButton.setAttribute('aria-expanded', 'false');
+        }
+    });
+</script>
 </body>
 </html>

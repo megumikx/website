@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Джинн — ElmAli Snacks{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/catalog.css' %}?v=1">
+{% endblock %}
+
+{% block content %}
+<div class="eac" style="--accent:#E9A51A">
+    <header class="eac-head">
+        <a href="{% url 'index' %}#brands" class="eac-back">← Все бренды</a>
+        <h1>Джинн</h1>
+        <p>Ароматные семечки с насыщенным вкусом — отличный перекус на каждый день.</p>
+    </header>
+
+    <section class="eac-grid">
+        {% for product in products %}
+        <article class="eac-card">
+            <div class="eac-img">
+                {% if product.image_url %}
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" loading="lazy">
+                {% elif product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" loading="lazy">
+                {% else %}
+                    <span class="eac-placeholder">Изображение отсутствует</span>
+                {% endif %}
+            </div>
+
+            <div class="eac-info">
+                <h2>{{ product.name }}</h2>
+                {% if product.description %}
+                    <p>{{ product.description }}</p>
+                {% endif %}
+            </div>
+        </article>
+        {% empty %}
+        <p class="eac-empty">Пока товаров нет. Добавьте товары «Джинн» через админ-панель.</p>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}

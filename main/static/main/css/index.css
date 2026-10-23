@@ -1,0 +1,61 @@
+/* Все классы начинаются с ea- , чтобы не конфликтовать со старым CSS */
+.ea{--ink:#101935;--muted:#55607f;--red:#FF3B4E;--sun:#FFC93C;--mint:#19C3B1;--card:#fff;--line:#e3e8f3;
+    --display:'Unbounded','Arial Black',sans-serif;font-family:'Manrope',Arial,sans-serif;color:var(--ink);line-height:1.6;font-size:17px}
+.ea *{box-sizing:border-box}
+.ea h1,.ea h2,.ea h3,.ea p{margin:0}
+.ea a{color:inherit;text-decoration:none}
+.ea :focus-visible{outline:3px solid var(--red);outline-offset:3px}
+
+/* Hero */
+.ea-hero{position:relative;overflow:hidden;border-radius:32px;background:var(--ink);color:#fff;padding:72px 56px;margin-bottom:24px}
+.ea-hero-content{position:relative;z-index:1;max-width:640px}
+.ea-hero h1{font-family:var(--display);font-weight:700;font-size:clamp(32px,4.6vw,58px);line-height:1.1;letter-spacing:-.03em}
+.ea-hero h1 em{display:block;font-style:normal;color:var(--sun)}
+.ea-hero-description{margin-top:24px;font-size:19px;color:#c9d2ee;max-width:52ch}
+.ea-btn{display:inline-block;margin-top:32px;padding:15px 28px;border-radius:14px;background:var(--red);color:#fff;font-weight:700;transition:transform .15s}
+.ea-btn:hover{transform:translateY(-2px)}
+.ea-hero-note{margin-top:28px;color:#9fabd1;font-size:15px}
+.ea-circle{position:absolute;border-radius:50%}
+.ea-c1{width:380px;height:380px;right:-80px;top:-90px;background:var(--red);opacity:.9}
+.ea-c2{width:240px;height:240px;right:150px;bottom:-110px;background:var(--mint)}
+.ea-c3{width:110px;height:110px;right:70px;bottom:90px;background:var(--sun)}
+.ea-label{position:absolute;right:56px;top:50%;transform:translateY(-50%);z-index:1;font-family:var(--display);font-weight:700;font-size:16px;line-height:1.4;text-align:right;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.25)}
+
+/* Преимущества */
+.ea-features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:72px}
+.ea-feature{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px}
+.ea-dot{width:48px;height:48px;border-radius:14px;margin-bottom:20px}
+.ea-feature:nth-child(1) .ea-dot{background:var(--sun)}
+.ea-feature:nth-child(2) .ea-dot{background:var(--red)}
+.ea-feature:nth-child(3) .ea-dot{background:var(--mint)}
+.ea-feature h3{font-family:var(--display);font-weight:500;font-size:18px;line-height:1.3;margin-bottom:10px}
+.ea-feature p{color:var(--muted)}
+
+/* Бренды */
+.ea-head{margin-bottom:32px;max-width:640px}
+.ea-head h2,.ea-partner h2{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.2vw,40px);letter-spacing:-.02em;line-height:1.15}
+.ea-head p{margin-top:12px;color:var(--muted)}
+.ea-brands{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:88px}
+.ea-brand{position:relative;display:block;overflow:hidden;border-radius:24px;aspect-ratio:8/4.6;background:#dfe5f3}
+.ea-brand img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.ea-brand:hover img{transform:scale(1.05)}
+.ea-brand::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,25,53,.55),transparent 55%);pointer-events:none}
+.ea-brand-info{position:absolute;left:16px;right:16px;bottom:16px;z-index:1;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;color:#fff}
+.ea-brand-name{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.2}
+.ea-brand-type{display:block;margin-top:2px;font-size:14px;opacity:.9}
+.ea-arrow{flex:none;width:40px;height:40px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-weight:700;transition:background .2s,color .2s}
+.ea-brand:hover .ea-arrow{background:var(--sun)}
+
+/* Партнёрство */
+.ea-partner{display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--sun);border-radius:32px;padding:56px;margin-bottom:48px}
+.ea-partner h2{max-width:20ch}
+.ea-partner p{margin-top:12px;max-width:48ch;color:#3b3a2a}
+.ea-partner .ea-btn{margin:0;background:var(--ink);white-space:nowrap}
+
+@media (max-width:900px){
+  .ea-hero{padding:48px 28px}.ea-label{display:none}.ea-c1{opacity:.35}
+  .ea-features,.ea-brands{grid-template-columns:1fr 1fr}
+  .ea-partner{padding:36px 28px}
+}
+@media (max-width:560px){.ea-features,.ea-brands{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.ea *{transition:none!important}}

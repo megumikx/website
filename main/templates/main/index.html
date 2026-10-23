@@ -1,74 +1,138 @@
-
 {% extends "main/base.html" %}
+{% load i18n %}
+{% load static %}
 
-{% block title %}ElmAli — Snacks{% endblock %}
+{% block title %}ElmAli — Импорт и дистрибуция{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <div>
-        <p class="eyebrow">МИР ВКУСНЫХ ПЕРЕКУСОВ</p>
-        <h1>Вкус, который<br>объединяет</h1>
-        <p>Сухарики, жевательная резинка и семечки на каждый день.</p>
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'main/css/index.css' %}?v=1">
+{% endblock %}
+
+<div class="ea">
+
+<!-- Главный баннер -->
+<section class="ea-hero">
+    <div class="ea-hero-content">
+        <h1>
+            Международные бренды.
+            <em>Надёжные поставки.</em>
+        </h1>
+
+        <p class="ea-hero-description">
+            Импортируем продукцию из разных стран
+            и поставляем востребованные товары
+            в магазины по всему Азербайджану.
+        </p>
+
+        <a href="#brands" class="ea-btn">Наши бренды ↗</a>
+
+        <p class="ea-hero-note">Связываем производителей, бренды и розничную торговлю</p>
+    </div>
+
+    <div aria-hidden="true">
+        <span class="ea-circle ea-c1"></span>
+        <span class="ea-circle ea-c2"></span>
+        <span class="ea-circle ea-c3"></span>
+        <span class="ea-label">ELMALI<br>AZERBAIJAN</span>
     </div>
 </section>
 
-<h2>Наши бренды</h2>
+<!-- Преимущества -->
+<section class="ea-features">
+    <article class="ea-feature">
+        <div class="ea-dot"></div>
+        <h3>Международный ассортимент</h3>
+        <p>Продукция различных брендов из разных стран.</p>
+    </article>
 
-<section class="brands">
+    <article class="ea-feature">
+        <div class="ea-dot"></div>
+        <h3>Дистрибуция в Азербайджане</h3>
+        <p>Поставки товаров для розничной торговли.</p>
+    </article>
 
-    <a href="{% url 'obertos' %}" class="brand brand-obertos brand-image-only">
-        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1791895465/photo_5255841065003063980_w_mv2dif.jpg"
-             alt="Продукция Obertos" class="brand-full-image">
-        <div class="brand-overlay">
-            <span>OBERTOS</span>
-            <small>Хлебные чипсы →</small>
-        </div>
-    </a>
-
-    <a href="{% url 'well' %}" class="brand brand-well brand-image-only">
-        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792065838/3f204877-f106-459f-bab4-2e68d8beaefb_vfgjps.png"
-             alt="Продукция Well" class="brand-full-image">
-        <div class="brand-overlay">
-            <span>WELL</span>
-            <small>Жевательная резинка →</small>
-        </div>
-    </a>
-
-    <a href="{% url 'djin' %}" class="brand brand-djin brand-image-only">
-        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792067398/49cb8466-5fc2-4849-8642-4ff1df42548b_vecgoj.png"
-             alt="Продукция Djinn" class="brand-full-image">
-        <div class="brand-overlay">
-            <span>Djinn</span>
-            <small>Семечки с обжаркой →</small>
-        </div>
-    </a>
-
-    <a href="{% url 'puxliykrolik' %}" class="brand brand-puxliykrolik brand-image-only">
-        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792130746/fa9c7c70-6d2a-470d-a529-469d522ecf5b_hs3rfd.png"
-             alt="Продукция Пухлый Кролик" class="brand-full-image">
-        <div class="brand-overlay">
-            <span>Пухлый Кролик</span>
-            <small>Воздушное суфле →</small>
-        </div>
-    </a>
-
-    <a href="{% url 'boombubble' %}" class="brand brand-boombubble brand-image-only">
-        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792140904/338c4069-9274-4218-8d6d-2f5937d7d942_ckbzhn.png"
-             alt="Продукция Bubble Boom" class="brand-full-image">
-        <div class="brand-overlay">
-            <span>Bubble Boom</span>
-            <small>Жевательная резинка с начинкой →</small>
-        </div>
-    </a>
-
-    <a href="{% url 'chokki' %}" class="brand brand-chokki brand-image-only">
-        <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792653938/38974061-fb3a-4d65-a50f-5692f5734115_auca4b.png"
-             alt="Продукция ChoK-ki" class="brand-full-image">
-        <div class="brand-overlay">
-            <span>ChoK-ki</span>
-            <small>Палочки в глазури →</small>
-        </div>
-    </a>
-
+    <article class="ea-feature">
+        <div class="ea-dot"></div>
+        <h3>Разнообразие продукции</h3>
+        <p>Снеки, жевательная резинка и сладости.</p>
+    </article>
 </section>
+
+<!-- Каталог брендов -->
+<section id="brands">
+    <div class="ea-head">
+        <h2>Бренды, которые мы представляем</h2>
+        <p>Знакомьтесь с ассортиментом и выбирайте интересующий бренд.</p>
+    </div>
+
+    <div class="ea-brands">
+
+        <a href="{% url 'obertos' %}" class="ea-brand">
+            <img src="https://res.cloudinary.com/deoectfow/image/upload/v1791895465/photo_5255841065003063980_w_mv2dif.jpg" alt="Продукция Obertos" loading="lazy">
+            <div class="ea-brand-info">
+                <div><span class="ea-brand-name">Obertos</span><span class="ea-brand-type">Хлебные чипсы</span></div>
+                <span class="ea-arrow">↗</span>
+            </div>
+        </a>
+
+        <a href="{% url 'well' %}" class="ea-brand">
+            <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792065838/3f204877-f106-459f-bab4-2e68d8beaefb_vfgjps.png" alt="Продукция Well" loading="lazy">
+            <div class="ea-brand-info">
+                <div><span class="ea-brand-name">Well</span><span class="ea-brand-type">Жевательная резинка</span></div>
+                <span class="ea-arrow">↗</span>
+            </div>
+        </a>
+
+        <a href="{% url 'djin' %}" class="ea-brand">
+            <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792067398/49cb8466-5fc2-4849-8642-4ff1df42548b_vecgoj.png" alt="Продукция Джинн" loading="lazy">
+            <div class="ea-brand-info">
+                <div><span class="ea-brand-name">Джинн</span><span class="ea-brand-type">Семечки</span></div>
+                <span class="ea-arrow">↗</span>
+            </div>
+        </a>
+
+        <a href="{% url 'puxliykrolik' %}" class="ea-brand">
+            <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792130746/fa9c7c70-6d2a-470d-a529-469d522ecf5b_hs3rfd.png" alt="Продукция Пухлый Кролик" loading="lazy">
+            <div class="ea-brand-info">
+                <div><span class="ea-brand-name">Пухлый Кролик</span><span class="ea-brand-type">Воздушное суфле</span></div>
+                <span class="ea-arrow">↗</span>
+            </div>
+        </a>
+
+        <a href="{% url 'boombubble' %}" class="ea-brand">
+            <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792140904/338c4069-9274-4218-8d6d-2f5937d7d942_ckbzhn.png" alt="Продукция Bubble Boom" loading="lazy">
+            <div class="ea-brand-info">
+                <div><span class="ea-brand-name">Bubble Boom</span><span class="ea-brand-type">Жевательная резинка</span></div>
+                <span class="ea-arrow">↗</span>
+            </div>
+        </a>
+
+        <a href="{% url 'chokki' %}" class="ea-brand">
+            <img src="https://res.cloudinary.com/deoectfow/image/upload/v1792653938/38974061-fb3a-4d65-a50f-5692f5734115_auca4b.png" alt="Продукция ChoKi-ki" loading="lazy">
+            <div class="ea-brand-info">
+                <div><span class="ea-brand-name">ChoKi-ki</span><span class="ea-brand-type">Сладости в глазури</span></div>
+                <span class="ea-arrow">↗</span>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<!-- Сотрудничество -->
+<section class="ea-partner">
+    <div>
+        <h2>Ищете поставщика продукции для своего магазина?</h2>
+        <p>
+            Свяжитесь с ElmAli, чтобы обсудить ассортимент
+            и возможности сотрудничества.
+        </p>
+    </div>
+
+    <a href="{% url 'about' %}" class="ea-btn">О компании и контакты ↗</a>
+</section>
+
+</div>
+
 {% endblock %}

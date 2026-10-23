@@ -1,0 +1,32 @@
+body{background:#F3F6FB;color:#101935;font-family:'Manrope',Arial,sans-serif}
+
+.ea-header{position:sticky;top:0;z-index:50;background:rgba(243,246,251,.88);backdrop-filter:blur(10px);border-bottom:1px solid #dde3f0}
+.ea-header-inner{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.ea-logo{font-family:'Unbounded','Arial Black',sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em;text-decoration:none;color:#101935}
+.ea-logo i{font-style:normal;color:#FF3B4E}
+.ea-header-right{display:flex;align-items:center;gap:14px}
+
+.ea-lang{display:flex;gap:6px;margin:0}
+.ea-lang-btn{padding:7px 14px;border-radius:999px;border:1.5px solid #dde3f0;background:transparent;color:#101935;font:700 14px 'Manrope',Arial,sans-serif;cursor:pointer;transition:background .2s}
+.ea-lang-btn:hover{background:#e6ebf6}
+.ea-lang-btn.is-active{background:#101935;color:#fff;border-color:#101935}
+
+.ea-burger{width:44px;height:44px;border-radius:12px;border:1.5px solid #dde3f0;background:transparent;cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:0}
+.ea-burger span{width:20px;height:2px;background:#101935;border-radius:2px;transition:transform .25s,opacity .2s}
+.ea-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ea-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.ea-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+.ea-menu{display:none;position:absolute;right:24px;top:76px;min-width:240px;background:#fff;border:1px solid #dde3f0;border-radius:20px;padding:10px;box-shadow:0 18px 40px rgba(16,25,53,.18)}
+.ea-menu.active{display:block}
+.ea-menu a{display:block;padding:12px 16px;border-radius:12px;color:#101935;text-decoration:none;font-weight:500;transition:background .15s}
+.ea-menu a:hover{background:#FFF1C9}
+.ea-menu a:last-child{margin-top:6px;border-top:1px solid #eef1f8;border-radius:0 0 12px 12px;font-weight:700}
+
+.ea-main{max-width:1200px;margin:0 auto;padding:32px 24px 0}
+.ea-burger:focus-visible,.ea-lang-btn:focus-visible,.ea-menu a:focus-visible{outline:3px solid #FF3B4E;outline-offset:2px}
+
+@media (max-width:560px){
+  .ea-header-inner,.ea-main{padding-left:16px;padding-right:16px}
+  .ea-menu{right:16px;left:16px}
+}

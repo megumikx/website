@@ -1,0 +1,19 @@
+CLOUDINARY_CLOUD_NAME=deoectfow
+CLOUDINARY_API_KEY=976858926997375
+CLOUDINARY_API_SECRET=e_PGrwaFmlGmX86GxzCKxkvb-yY
+
+# Секреты и настройки
+env
+.env
+.env.*
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Локальная база данных
+db.sqlite3
+
+# IDE
+.idea/
